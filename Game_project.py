@@ -6,16 +6,18 @@ from score import score_board
 #creating the board or screen on which the game will be played
 game_board = Screen()
 game_board.tracer(0) # stops the animation or movement of the paddle when the screen appears
-game_board.bgcolor('pink')
-game_board.setup(width=900, height = 600)
+game_board.bgcolor('white')
+game_board.setup(width=900, height = 600) # dimension of the screen
 game_board.title('Pong Game')
 
-#calling the Paddle class 
+# creating the paddles with the Paddle class 
 right_paddle = Paddle((400,0))
 left_paddle = Paddle((-400,0))
 
-ball = Ball()
-score_record = score_board()
+
+ball = Ball()   #calling the ball class
+
+score_record = score_board()  # calling the score_board class
 
 
 #getting the paddles move by pressing the keys on the keyboard
@@ -35,7 +37,7 @@ while game_is_on:
     time.sleep(ball.move_speed)  # To make sure the ball moves at a reasonable speed
     game_board.update()
     ball.move()
-    #getting the ball bounce back after hitting the top bar
+    #getting the ball bounce back after hitting the top and the bottom of the screen
     if ball.ycor() > 280 or ball.ycor() <-280:
         ball.bounce_y()
         #getting the ball bounce back after colliding with the paddles
@@ -55,4 +57,3 @@ while game_is_on:
     
 
 
-game_board.exitonclick() 
